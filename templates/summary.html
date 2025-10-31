@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="static\style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <style>
+        .chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.chart-card {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.chart-card img {
+    width: 450px;
+    height: 450px;
+    object-fit: contain;
+}
+
+    </style>
+
+</head>
+<body>
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/admin_dashboard" style="color: #b60909;font-weight: 700;">Welcome Admin</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin_dashboard">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/regusers">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/summary">Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Logout</a>
+        </li>
+    </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="content">
+  <h3 class="heading" style="border: 2px solid black; text-align: center; margin: 20px;margin-top: 30px;padding: 3px;">Summary</h3>
+
+  {% if charts %}
+    <div class="chart-container">
+      {% for chart in charts %}
+        <div class="chart-card">
+            <h5>{{ chart.lot_name }}</h5>
+            <img src="{{ url_for('static', filename=chart.filename.split('/')[-1]) }}" alt="Chart for {{ chart.lot_name }}">
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No chart data available.</p>
+  {% endif %}
+</div>
+
+
+</body>
+</html>

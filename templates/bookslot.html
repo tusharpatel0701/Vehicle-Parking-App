@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book the Parking Spot</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+<body>
+  <div id="main">
+        <div id="canvas">
+            <div id="form-body">
+                  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="card-title text-center mb-5 fw-light fs-5" id="plot" >Book the Parking Lot</h5>
+            <form action="{{url_for('book_spot', lotid=lot.lotid, user_id=this_user.id )}}" method="post">
+              <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="floatingInput" name="spotid" value="{{spot.spot_id}}" readonly>
+                <label for="floatingInput">Spot Id:</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="floatingInput" name="lotid" value="{{lot.lotid}}" readonly>
+                <label for="floatingInput">Lot Id:</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" name="vno" required>
+                <label for="floatingInput">Vehicle No:</label>
+              </div>
+
+          
+              <!-- Time -->
+               <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" name="datetime" value="{{datetime}}" readonly>
+                <label for="floatingInput">Date & Time:</label>
+              </div>
+              
+              <div class="buttons">
+                   <button class="btn btn-success" type="submit">Reserve</button>
+                  <a class="btn btn-danger" href="{{url_for('user_dashboard', user_id=this_user.id)}}" style="margin: 10px;">Cancel</a>
+              </div>
+
+              <hr class="my-4">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+           
+        </div>
+    </div>
+</body>
+</html>

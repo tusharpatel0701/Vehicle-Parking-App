@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="static\style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/admin_dashboard" style="color: #b60909;font-weight: 700;">Welcome Admin</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin_dashboard">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin_dashboard">Users</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#">Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Logout</a>
+        </li>
+    </ul>
+    </div>
+  </div>
+</nav>
+</nav>
+
+<!-- Flash Messages -->
+<div class="container mt-3">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+
+
+<div class="content">
+  <h3 class="heading" style="border: 2px solid black; text-align: center; margin: 20px;margin-top: 30px;padding: 3px;">Parking lot in {{lot.location}}</h3>
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">STATUS</th>
+      <th scope="col">USER DETAILS</th>
+      <th scope="col">ACTION</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for id in details %}
+    <tr>
+      <td>{{id.spot_id}}</td>
+      {% if id.status == "available" %}
+      <th scope="row" style="color: green;">{{id.status}}</th>
+      {% else %}
+        <th scope="row" style="color:#b60909">{{id.status}}</th>
+      {% endif %}
+      
+      <td>
+         Vehicle No: {{id.vehicle_No}}
+         <br>
+         User Name: {{id.user.fullname}}
+         <br>
+         Email: {{id.user.email}}
+         <br>
+         Address: {{id.user.address}}
+         <br>
+         Pincode: {{id.user.pincode}}
+         <br>
+         Parked at: {{id.parked_at.strftime('%Y-%m-%d %H:%M:%S') if id.parked_at else 'None'}}
+         <br>
+         {% if id.parked_at is none %}
+          Released at: None
+         {% elif id.released_at %}
+          Released at: {{ id.released_at.strftime('%Y-%m-%d %H:%M:%S') }}
+         {% else %}
+          Released at: Ongoing
+         {% endif %}
+
+      </td>
+      <td>
+        <a href="{{ url_for('deletespot', spot_id=id.spot_id) }}" class="btn btn-danger">Delete</a>
+      </td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
