@@ -1,0 +1,66 @@
+
+body {
+  font-family: sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Form Container Styles */
+.form-container {
+  width: 320px;
+  margin: 60px auto;
+  padding: 35px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+h2 {
+  background-color: #ffeb3b;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 0;
+}
+
+/* Label Styles */
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Input Field Styles */
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Button Container Styles */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* Button Styles */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Reserve Button Styles */
+.reserve {
+  background-color: #4CAF50;
+}
+
+/* Cancel Button Styles */
+.cancel {
+  background-color: #f44336;
+}

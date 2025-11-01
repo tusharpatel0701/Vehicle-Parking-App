@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+}
+
+
+#main,canvas{
+    /* border: 2px solid black; */
+    margin-top: 30px;
+
+}
+
+#canvas{
+    margin: auto;
+    width: 65%;
+    height: 50%;
+    /* border: 2px solid black; */
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+#login{
+    text-decoration: solid;
+}
+
+.heading{
+    margin: 20px;
+    margin-top: 30px;
+    padding: 3px;
+}
