@@ -1,0 +1,32 @@
+to create database go to python shell just by entering python to terminal
+>>> from app import *
+>>> db.create_all()
+
+to add entry to database
+>>> from app import *
+>>> user1 = User(fullname="Admin123",email="admin@user.com",password="12345",address="Greater Noida",pincode="201310",type="admin")
+>>>db.session.add(user1)
+>>>db.session.commit() # to reflect to database
+
+to update changes to entry in database we use-
+>>>user = User.query.filter_by(username="name in database").first()
+>>>user.username = "update name"
+>>>user.email = "update email"
+>>>db.session.commit()
+
+to delete entry from database -
+>>>user = User.query.get(id which we want to delete)
+>>>db.session.delete(user)
+>>>db.session.commit()
+
+to read entry from database-
+>>>users = User.query.all()
+>>>users
+>>>user1 = users[0]
+>>>user1
+>>>user1.fullname # entry that you want to retrieve like fullname
+
+NOTE--> from app import *   should be written before starting any operation on database
+
+to come out of the shell-
+>>>exit()
