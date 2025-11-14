@@ -28,7 +28,7 @@ The system is built using **Flask**, **SQLAlchemy**, **Bootstrap**, and **Matplo
 ## 🧠 Key Features  
 
 ### 👤 User Features  
-- 🔐 **User Registration & Login** (secured via Flask-Login)  
+- 🔐 **User Registration & Login** 
 - 🅿️ **Book Parking Slots** with real-time status  
 - 📄 **View Active & Past Bookings**  
 - 🔓 **Release Parking Slots** instantly  
@@ -54,8 +54,7 @@ The system is built using **Flask**, **SQLAlchemy**, **Bootstrap**, and **Matplo
 - **Database:** SQLite (via SQLAlchemy ORM)  
 - **Templating:** Jinja2  
 - **Frontend:** HTML, CSS, Bootstrap 5  
-- **Charts:** Matplotlib  
-- **Auth:** Flask-Login  
+- **Charts:** Matplotlib   
 
 ---
 
